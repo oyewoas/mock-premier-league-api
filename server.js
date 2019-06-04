@@ -6,9 +6,13 @@ const cors = require('cors');
 const env = require('./env');
 const UsersRoute = require('./app/routes/userRoute');
 const dbConnect = require('./app/db/dbConnection');
+const morgan = require('morgan');
 
-// // Logger
-// app.use(express.logger());
+//don't show the log when it is test
+if(env.environment !== 'test') {
+  //use morgan to log at command line
+  app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
+}
 
 // Add middleware for parsing URL encoded bodies (which are usually sent by browser)
 app.use(cors());
@@ -22,3 +26,5 @@ app.listen(env.port).on('listening', () => {
   console.log('🚀 are live on ' + env.port);
 });
 
+
+module.exports = app;
