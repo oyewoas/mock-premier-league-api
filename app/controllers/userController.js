@@ -6,12 +6,6 @@ const status = require('../helpers/statuses');
 const messages = require('../helpers/messages');
 const errorCodes = require('../helpers/errorCodes');
 
-
-
-const index = function(req, res) {
-    res.send('NOT IMPLEMENTED: Site Home Page');
-};
-
 const signUpUser = async (req, res) => {
     try {
         req.body.password = await bcrypt.hash(req.body.password, 10);
@@ -75,7 +69,6 @@ const signInUser = async (req, res) => {
 
 
 module.exports = {
-    index,
     signUpUser,
-    signInUser,
+    signInUser
 };

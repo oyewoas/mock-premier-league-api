@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');
 const env = require('./env');
 const UsersRoute = require('./app/routes/userRoute');
+const AdminsRoute = require('./app/routes/adminRoute');
 const dbConnect = require('./app/db/dbConnection');
 const morgan = require('morgan');
 
@@ -21,6 +22,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use('/api/v1', UsersRoute);
+app.use('/api/v1', AdminsRoute);
+
 
 app.listen(env.port).on('listening', () => {
   console.log('🚀 are live on ' + env.port);
