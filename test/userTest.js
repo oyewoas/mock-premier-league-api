@@ -36,6 +36,7 @@ should;
                         res.should.have.status(status.ok);
                         res.body.should.be.a('object');
                         res.body.should.have.property('message').eql(messages.signUp.success);
+                        res.body.data.should.have.property('token');
                         res.body.data.user.should.have.property('_id');
                         res.body.data.user.should.have.property('first_name');
                         res.body.data.user.should.have.property('last_name');
@@ -45,4 +46,24 @@ should;
                     });
             });
         });
+
+
+        // describe('POST /api/v1/user/signin', () => {
+        //     it('should respond with a success message along with a signed in user that was added', (done) => {
+        //         let user = {
+        //             email: 'ryan@ryan.com',
+        //             password: 'password'
+        //         }
+        //         chai.request(server)
+        //             .post('/api/v1/user/signin')
+        //             .send(user)
+        //             .end((err, res) => {
+        //                 res.should.have.status(status.ok);
+        //                 res.body.should.be.a('object');
+        //                 res.body.should.have.property('message').eql(messages.signIn.success);
+        //                 res.body.data.should.have.property('token');
+        //                 done();
+        //             });
+        //     });
+        // });
     })
