@@ -17,7 +17,7 @@ const addTeams = async (req, res) => {
     } catch (err) {
         console.log(err);
 
-        if (err.code === errorCodes.duplicateEmailCode){
+        if (err.code === errorCodes.duplicateCode){
             res.status(409).json({
                 status: status.conflict,
                 message: messages.addTeam.duplicateTeam
@@ -34,7 +34,7 @@ const addTeams = async (req, res) => {
 
 const editTeams = async (req, res) => {
     try {
-        const  teamId= req.params.id
+        const teamId= req.params.id
         const team = await TeamsModel.findById(teamId);
         if (!team) {
             res.status(404).json({

@@ -1,3 +1,3 @@
 module.exports = {
-    'duplicateEmailCode': 11000,
+    'duplicateCode': 11000,
 }

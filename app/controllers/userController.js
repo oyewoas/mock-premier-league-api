@@ -22,7 +22,7 @@ const signUpUser = async (req, res) => {
         });
     } catch (err) {
         console.log(err.code);
-        if (err.code === errorCodes.duplicateEmailCode){
+        if (err.code === errorCodes.duplicateCode){
             res.status(409).json({
                 status: status.conflict,
                 message: messages.signUp.duplicateEmail

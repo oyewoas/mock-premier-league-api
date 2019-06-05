@@ -12,3 +12,4 @@ router.delete('/team/delete/:id', AdminAuth, TeamController.removeTeams);
 
 
 module.exports = router;
+

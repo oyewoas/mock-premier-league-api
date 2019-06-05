@@ -32,7 +32,7 @@ const signUpAdmin = async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        if (err.code === errorCodes.duplicateEmailCode){
+        if (err.code === errorCodes.duplicateCode){
             res.status(409).json({
                 status: status.conflict,
                 message: messages.signUpAdmin.duplicateEmail

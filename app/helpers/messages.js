@@ -41,7 +41,7 @@ module.exports = {
     },
 
     'editTeam': {
-        'error': 'An error occurred while trying to edi team',
+        'error': 'An error occurred while trying to edit team',
         'success': 'Team Editing was successful',
         'notfound': 'Team Does Not Exist',
     },
@@ -60,5 +60,32 @@ module.exports = {
         'error': 'An error occurred while trying to get teams',
         'success': 'Teams Successfully Found',
         'notfound': 'There are not Teams yet',
+    },
+    'addFixture': {
+        'error': 'An error occurred while trying to create fixture',
+        'success': 'Fixture Creation was successful',
+        'duplicateFixture': 'Fixture Already Exists'
+    },
+
+    'editFixture': {
+        'error': 'An error occurred while trying to edit fixture',
+        'success': 'Fixture Editing was successful',
+        'notfound': 'Fixture Does Not Exist',
+    },
+
+    'updateFixture': {
+        'error': 'An error occurred while trying to update fixture',
+        'success': 'Fixture Update was successful',
+        'notfound': 'Fixture Does Not Exist',
+    },
+    'removeFixture': {
+        'error': 'An error occurred while trying to delete fixture',
+        'success': 'Fixture was deleted Successfully',
+        'notfound': 'Fixture Does Not Exist',
+    },
+    'viewFixture': {
+        'error': 'An error occurred while trying to get fixtures',
+        'success': 'Fixtures Successfully Found',
+        'notfound': 'There are not Fixtures yet',
     }
 }
