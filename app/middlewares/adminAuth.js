@@ -20,9 +20,7 @@ module.exports = (req, res, next) => {
         const token = authHeader.split(' ')[1];
 
         const tokenData = jwt.verify(token, env.secret);
-
-        req.admin = tokenData.id;
-        req.is_admin = tokenData.is_admin;
+        req.user = { admin_id: tokenData.admin_id, is_admin: tokenData.is_admin }
 
         next();
     } catch (err) {

@@ -1,15 +1,13 @@
 const AdminsModel = require('../models/adminModel');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const env = require('../../env');
 const status = require('../helpers/statuses');
 const messages = require('../helpers/messages');
 const errorCodes = require('../helpers/errorCodes');
+const validation = require('../helpers/validations');
 
 
 const signUpAdmin = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const hashedPassword = await validation.hashPassword(req.body.password);
         const adminDetails = {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -21,15 +19,19 @@ const signUpAdmin = async (req, res) => {
         const response = admin.toJSON();
 
         delete response.password;
-
-        const token = jwt.sign({ id: admin.id }, env.secret, { expiresIn: '1h' });
+        console.log(response)
+        const token = validation.generateAdminToken(
+            response.email,
+            response._id,
+            response.is_admin
+        );
         res.status(200).json({
             status: status.ok,
             message: messages.signUpAdmin.success,
             data: { admin: response, token }
         });
     } catch (err) {
-        console.log(err.code);
+        console.log(err);
         if (err.code === errorCodes.duplicateEmailCode){
             res.status(409).json({
                 status: status.conflict,
@@ -53,23 +55,38 @@ const signInAdmin = async (req, res) => {
             '+password'
         );
 
+
         if (!admin)
             return res
                 .status(404)
-                .json({ status: status.notfound, message: messages.signInAdmin.notfound });
+                .json({
+                    status: status.notfound,
+                    message: messages.signInAdmin.notfound
+                });
 
-        const isPasswordValid = await bcrypt.compare(
-            req.body.password,
-            admin.password
+        const isPasswordValid = await validation.comparePassword(
+            admin.password,
+            req.body.password
         );
 
         if (!isPasswordValid)
             return res
                 .status(401)
-                .json({ status: status.unauthorized, message: messages.signInAdmin.invalid });
-
-        const token = jwt.sign({ id: admin.id }, env.secret);
-        res.json({status: status.ok, message: messages.signInAdmin.success, data: { token }});
+                .json({
+                    status: status.unauthorized,
+                    message: messages.signInAdmin.invalid
+                });
+        const response = admin.toJSON();
+        const token = validation.generateAdminToken(
+            response.email,
+            response._id,
+            response.is_admin
+        );
+        res.json({
+            status: status.ok,
+            message: messages.signInAdmin.success,
+            data: { token }
+        });
     } catch (err) {
         res.status(500).json({ status: status.error, message: messages.signInAdmin.error });
     }
