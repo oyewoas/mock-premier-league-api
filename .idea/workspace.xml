@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fda786b8-1d7e-4965-83e6-9cb7e2120759" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/adminController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/messages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middlewares/adminAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/middlewares/adminAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/adminRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/adminRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/env.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-    </list>
+    <list default="true" id="fda786b8-1d7e-4965-83e6-9cb7e2120759" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -264,12 +254,12 @@
       <updated>1559639306187</updated>
       <workItem from="1559639320416" duration="20422000" />
       <workItem from="1559689881054" duration="4180000" />
-      <workItem from="1559694130642" duration="7820000" />
+      <workItem from="1559694130642" duration="8221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32422000" />
+    <option name="totallyTimeSpent" value="32823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
