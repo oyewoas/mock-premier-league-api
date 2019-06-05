@@ -7,6 +7,7 @@ const env = require('./env');
 const UsersRoute = require('./app/routes/userRoute');
 const AdminsRoute = require('./app/routes/adminRoute');
 const TeamRoute = require('./app/routes/teamRoute');
+const FixtureRoute = require('./app/routes/fixtureRoute');
 const dbConnect = require('./app/db/dbConnection');
 const morgan = require('morgan');
 
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use('/api/v1', UsersRoute);
 app.use('/api/v1', AdminsRoute);
 app.use('/api/v1',  TeamRoute);
+app.use('/api/v1',  FixtureRoute);
 
 
 app.listen(env.port).on('listening', () => {

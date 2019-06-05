@@ -17,7 +17,7 @@ const addTeams = async (req, res) => {
     } catch (err) {
         console.log(err);
 
-        if (err.code === errorCodes.duplicateEmailCode){
+        if (err.code === errorCodes.duplicateCode){
             res.status(409).json({
                 status: status.conflict,
                 message: messages.addTeam.duplicateTeam
@@ -34,8 +34,15 @@ const addTeams = async (req, res) => {
 
 const editTeams = async (req, res) => {
     try {
-        const  teamId= req.params.id
-        const team = await TeamsModel.findById(teamId);
+        const teamSlug= req.params.slug;
+        const team = await TeamsModel.findOne({slug: teamSlug}, (err, team) => {
+            if (err) {
+                res.status(404).json({
+                    status: status.notfound,
+                    message: messages.editTeam.notfound
+                })
+            }
+        });
         if (!team) {
             res.status(404).json({
                 status: status.notfound,
@@ -83,8 +90,15 @@ const viewTeams = async (req, res) => {
 
 const updateTeams = async (req, res) => {
     try {
-        const teamId= req.params.id
-        const team = await TeamsModel.findById(teamId);
+        const teamSlug = req.params.slug
+        const team = await TeamsModel.findOne({slug: teamSlug}, (err, team) => {
+            if (err) {
+                res.status(404).json({
+                    status: status.notfound,
+                    message: messages.editTeam.notfound
+                })
+            }
+        });
         if (!team) {
             res.status(404).json({
                 status: status.notfound,
@@ -116,19 +130,36 @@ const updateTeams = async (req, res) => {
 
 const removeTeams = async (req, res) => {
     try {
-        const  teamId= req.params.id;
-        const team = await TeamsModel.findByIdAndDelete({_id: teamId});
-        if (!team) {
+        const teamSlug = req.params.slug
+        const findTeam = await TeamsModel.findOne({slug: teamSlug}, (err, fixture) => {
+            if (err) {
+                res.status(404).json({
+                    status: status.notfound,
+                    message: messages.editTeam.notfound
+                })
+            }
+        });
+        if (!findTeam) {
             res.status(404).json({
                 status: status.notfound,
-                message: messages.removeTeam.notfound
+                message: messages.updateTeam.notfound
             })
         }
 
-        res.status(200).json({
-            status: status.ok,
-            message: messages.removeTeam.success
+        const team = await TeamsModel.findOneAndDelete({slug: teamSlug}, (err, team) => {
+            if (err) {
+                res.status(404).json({
+                    status: status.notfound,
+                    message: messages.editTeam.notfound
+                })
+            }
         });
+        if (!team) {
+            res.status(200).json({
+                status: status.ok,
+                message: messages.removeTeam.success
+            })
+        }
     } catch (err) {
         console.log(err);
 
