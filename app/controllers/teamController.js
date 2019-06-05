@@ -127,11 +127,43 @@ const updateTeams = async (req, res) => {
     }
 };
 
+const searchTeams =  async (req, res) => {
+    try {
+        const teamName = req.body.team_name.toLowerCase()
+        const team = await TeamsModel.findOne({team_name: teamName}, (err, team) => {
+            if (err) {
+                res.status(404).json({
+                    status: status.notfound,
+                    message: messages.viewTeam.notfound
+                })
+            }
+        });
+
+        if (team === undefined || team.length === 0) {
+            res.status(404).json({
+                status: status.notfound,
+                message: messages.viewTeam.notfound
+            })
+        }
+        res.status(200).json({
+            status: status.ok,
+            message: messages.viewTeam.success,
+            data: {team}
+        });
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            status: status.error,
+            message: messages.viewTeam.error
+        });
+    }
+};
 
 const removeTeams = async (req, res) => {
     try {
         const teamSlug = req.params.slug
-        const findTeam = await TeamsModel.findOne({slug: teamSlug}, (err, fixture) => {
+        const findTeam = await TeamsModel.findOne({slug: teamSlug}, (err, team) => {
             if (err) {
                 res.status(404).json({
                     status: status.notfound,
@@ -177,4 +209,5 @@ module.exports = {
     updateTeams,
     removeTeams,
     viewTeams,
+    searchTeams
 };

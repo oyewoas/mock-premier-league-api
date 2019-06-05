@@ -5,10 +5,12 @@ const Schema = mongoose.Schema;
     home_team: {
         type: String,
         required: true,
+        lowercase: true
     },
     away_team: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     home_team_scores: {
         type: Number,
@@ -41,7 +43,7 @@ const Schema = mongoose.Schema;
     },
     match_stadium: {
         type: String,
-        required: true,
+        required: true
     },
     match_status: {
         type: String,
