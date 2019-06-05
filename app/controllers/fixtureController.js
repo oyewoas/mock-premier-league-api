@@ -66,8 +66,8 @@ const editFixtures = async (req, res) => {
 const pendingFixtures =  async (req, res) => {
     try {
         const fixtures = await FixtureModel.find({match_status: 'pending'});
-        
-        if (!fixtures) {
+
+        if (fixtures === undefined || fixtures.length === 0) {
             res.status(404).json({
                 status: status.notfound,
                 message: messages.pendingFixture.notfound
@@ -83,6 +83,32 @@ const pendingFixtures =  async (req, res) => {
 
         res.status(500).json({
             status: status.error,
+            message: messages.pendingFixture.error
+        });
+    }
+};
+
+const searchFixtures =  async (req, res) => {
+    try {
+        const teamName = req.body.team_name.toLowerCase()
+        const fixtures = await FixtureModel.find({$or: [ { home_team: teamName }, { away_team: teamName}]});
+
+        if (fixtures === undefined || fixtures.length === 0) {
+            res.status(404).json({
+                status: status.notfound,
+                message: messages.viewFixture.notfound
+            })
+        }
+        res.status(200).json({
+            status: status.ok,
+            message: messages.viewFixture.success,
+            data: {fixtures}
+        });
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            status: status.error,
             message: messages.viewFixture.error
         });
     }
@@ -91,7 +117,7 @@ const pendingFixtures =  async (req, res) => {
 const completedFixtures =  async (req, res) => {
     try {
         const fixtures = await FixtureModel.find({match_status: 'completed'});
-        if (!fixtures) {
+        if (fixtures === undefined || fixtures.length === 0) {
             res.status(404).json({
                 status: status.notfound,
                 message: messages.viewFixture.notfound
@@ -233,5 +259,6 @@ module.exports = {
     removeFixtures,
     viewFixtures,
     pendingFixtures,
-    completedFixtures
+    completedFixtures,
+    searchFixtures
 };
