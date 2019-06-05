@@ -87,5 +87,10 @@ module.exports = {
         'error': 'An error occurred while trying to get fixtures',
         'success': 'Fixtures Successfully Found',
         'notfound': 'There are not Fixtures yet',
+    },
+    'pendingFixture': {
+        'error': 'An error occurred while trying to get pending fixtures',
+        'success': 'Pending Successfully Found',
+        'notfound': 'There are no Pending Fixtures',
     }
 }

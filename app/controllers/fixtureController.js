@@ -63,6 +63,56 @@ const editFixtures = async (req, res) => {
     }
 };
 
+const pendingFixtures =  async (req, res) => {
+    try {
+        const fixtures = await FixtureModel.find({match_status: 'pending'});
+        
+        if (!fixtures) {
+            res.status(404).json({
+                status: status.notfound,
+                message: messages.pendingFixture.notfound
+            })
+        }
+        res.status(200).json({
+            status: status.ok,
+            message: messages.pendingFixture.success,
+            data: {fixtures}
+        });
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            status: status.error,
+            message: messages.viewFixture.error
+        });
+    }
+};
+
+const completedFixtures =  async (req, res) => {
+    try {
+        const fixtures = await FixtureModel.find({match_status: 'completed'});
+        if (!fixtures) {
+            res.status(404).json({
+                status: status.notfound,
+                message: messages.viewFixture.notfound
+            })
+        }
+
+        res.status(200).json({
+            status: status.ok,
+            message: messages.viewFixture.success,
+            data: {fixtures}
+        });
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            status: status.error,
+            message: messages.viewFixture.error
+        });
+    }
+};
+
 const viewFixtures = async (req, res) => {
     try {
         const fixtures = await FixtureModel.find();
@@ -182,4 +232,6 @@ module.exports = {
     updateFixtures,
     removeFixtures,
     viewFixtures,
+    pendingFixtures,
+    completedFixtures
 };
