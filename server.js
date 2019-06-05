@@ -6,6 +6,7 @@ const cors = require('cors');
 const env = require('./env');
 const UsersRoute = require('./app/routes/userRoute');
 const AdminsRoute = require('./app/routes/adminRoute');
+const TeamRoute = require('./app/routes/teamRoute');
 const dbConnect = require('./app/db/dbConnection');
 const morgan = require('morgan');
 
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use('/api/v1', UsersRoute);
 app.use('/api/v1', AdminsRoute);
+app.use('/api/v1',  TeamRoute);
 
 
 app.listen(env.port).on('listening', () => {

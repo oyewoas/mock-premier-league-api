@@ -8,3 +8,4 @@ router.post('/admin/signin', AdminController.signInAdmin);
 router.post('/admin/signup', AdminController.signUpAdmin);
 
 module.exports = router;
+
