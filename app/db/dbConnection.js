@@ -7,14 +7,16 @@ class Database {
         this.dbConnect();
     }
     dbConnect() {
-        mongoose.connect(`${env.mongodb_url}`, { useNewUrlParser: true, useCreateIndex: true})
-            .then(() => {
-                console.log('Database connection successful');
 
-            })
-            .catch(err => {
-                console.error('Database connection error');
-            });
+            mongoose.connect(`${env.mongodb_url}`, {useNewUrlParser: true, useCreateIndex: true})
+                .then(() => {
+                    console.log('Database connection successful');
+
+                })
+                .catch(err => {
+                    console.error('Database connection error');
+                });
+
     }
 }
 

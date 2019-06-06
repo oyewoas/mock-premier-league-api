@@ -12,9 +12,9 @@ chai.use(chaiHttp);
 should;
 
 describe('Admin', () => {
-    beforeEach((done) => {
-        Admin.deleteOne({}, (err) => {
-            done();
+    before((done) => {
+       Admin.deleteOne({}, (err) => {
+           done();
         });
     });
     /*
@@ -36,7 +36,7 @@ describe('Admin', () => {
                     res.body.should.be.a('object');
                     res.body.should.have.property('message').eql(messages.signUpAdmin.success);
                     res.body.data.should.have.property('token');
-                    res.body.data.admin.should.have.property('is_admin');
+                    res.body.data.admin.should.have.property('is_admin').eql(true);
                     res.body.data.admin.should.have.property('_id');
                     res.body.data.admin.should.have.property('first_name');
                     res.body.data.admin.should.have.property('last_name');
