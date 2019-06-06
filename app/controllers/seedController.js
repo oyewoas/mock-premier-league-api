@@ -92,7 +92,7 @@ const seedFixtures = (req, res) => {
     // use the Fixture model to insert/save
     FixtureModel.remove({}, () => {
         for (fixture of fixtures) {
-            const newFixture = new TeamsModel(fixture);
+            const newFixture = new FixtureModel(fixture);
             newFixture.save();
         }
     });
