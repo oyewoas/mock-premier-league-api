@@ -26,6 +26,13 @@ let redisWebCache = (req, res, next) => {
         if (reply) {
             res.send(reply);
             return;
+        } else {
+            res.sendResponse = res.send;
+            res.send = body => {
+                client.set(key, JSON.stringify(body));
+                res.sendResponse(body);
+            };
+            next();
         }
     });
 
