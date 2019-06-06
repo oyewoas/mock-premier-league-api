@@ -16,7 +16,7 @@ router.delete('/fixture/delete/:slug', AdminAuth, FixtureController.removeFixtur
 // User Fixture Routes
 router.get('/pending/fixtures', UserAuth, redisMiddleWare.redisWebCache, FixtureController.pendingFixtures);
 router.get('/completed/fixtures', UserAuth, redisMiddleWare.redisWebCache, FixtureController.completedFixtures);
-router.get('/search/fixtures', UserAuth, redisMiddleWare.redisWebCache, FixtureController.searchFixtures);
+router.get('/search/fixtures', UserAuth, FixtureController.searchFixtures);
 
 module.exports = router;
 
