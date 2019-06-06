@@ -22,19 +22,6 @@ let redisWebCache = (req, res, next) => {
             next();
         }
     });
-    client.del(key, function(err, reply) {
-        if (reply) {
-            res.send(reply);
-            return;
-        } else {
-            res.sendResponse = res.send;
-            res.send = body => {
-                client.set(key, JSON.stringify(body));
-                res.sendResponse(body);
-            };
-            next();
-        }
-    });
 
 };
 
