@@ -80,11 +80,11 @@ const seedTeams = (req, res) => {
 const seedFixtures = (req, res) => {
     // create some events
     const fixtures = [
-        { home_team: 'Chelsea',  away_team: 'Arsenal', match_date: '12-06-2019', match_week: 1, match_time: '13:00', match_stadium: 'Wembley'},
-        { home_team: 'Arsenal',  away_team: 'Chelsea', match_date: '13-06-2019', match_week: 2, match_time: '14:00', match_stadium: 'Stadium'},
-        { home_team: 'Liverpool',  away_team: 'Arsenal', match_date: '19-06-2019', match_week: 20, match_time: '13:00', match_stadium: 'Old Trafford'},
-        { home_team: 'New Castle',  away_team: 'Arsenal', match_date: '17-06-2019', match_week: 4, match_time: '13:00', match_stadium: 'Wembley'},
-        { home_team: 'Everton',  away_team: 'Chelsea', match_date: '14-06-2019', match_week: 3, match_time: '15:00', match_stadium: 'Old Trafford'},
+        { home_team: 'Chelsea',  away_team: 'Arsenal', match_date: 12-6-2019, match_week: 1, match_time: '13:00', match_stadium: 'Wembley'},
+        { home_team: 'Arsenal',  away_team: 'Chelsea', match_date: 13-6-2019, match_week: 2, match_time: '14:00', match_stadium: 'Stadium'},
+        { home_team: 'Liverpool',  away_team: 'Arsenal', match_date: 19-6-2019, match_week: 20, match_time: '13:00', match_stadium: 'Old Trafford'},
+        { home_team: 'New Castle',  away_team: 'Arsenal', match_date: 17-6-2019, match_week: 4, match_time: '13:00', match_stadium: 'Wembley'},
+        { home_team: 'Everton',  away_team: 'Chelsea', match_date: 14-6-2019, match_week: 3, match_time: '15:00', match_stadium: 'Old Trafford'},
 
 
     ];
