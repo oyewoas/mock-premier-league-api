@@ -17,7 +17,7 @@ router.delete('/team/delete/:slug', AdminAuth, TeamController.removeTeams);
 // User Teams Route
 router.get('/user/teams', UserAuth, redisMiddleWare.redisWebCache, TeamController.viewTeams);
 router.get('/user/team/profile/:slug', UserAuth, redisMiddleWare.redisWebCache, TeamController.editTeams);
-router.get('/user/search/team', UserAuth, redisMiddleWare.redisWebCache, TeamController.searchTeams);
+router.get('/user/search/team', UserAuth,  TeamController.searchTeams);
 
 
 module.exports = router;

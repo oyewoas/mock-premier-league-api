@@ -139,7 +139,7 @@ const searchTeams =  async (req, res) => {
             }
         });
 
-        if (team === undefined || team.length === 0) {
+        if (team === undefined || team === null ) {
             res.status(404).json({
                 status: status.notfound,
                 message: messages.viewTeam.notfound
