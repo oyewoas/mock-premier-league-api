@@ -9,13 +9,13 @@ const redisMiddleWare = require('../middlewares/webCache')
 // Admin Teams Route
 
 router.post('/team/add', AdminAuth, TeamController.addTeams);
-router.get('/teams', AdminAuth, redisMiddleWare.redisWebCache, TeamController.viewTeams);
+router.get('/teams', AdminAuth, TeamController.viewTeams);
 router.get('/team/edit/:slug', AdminAuth, redisMiddleWare.redisWebCache, TeamController.editTeams);
 router.put('/team/update/:slug', AdminAuth, TeamController.updateTeams);
 router.delete('/team/delete/:slug', AdminAuth, TeamController.removeTeams);
 
 // User Teams Route
-router.get('/user/teams', UserAuth, redisMiddleWare.redisWebCache, TeamController.viewTeams);
+router.get('/user/teams', UserAuth, TeamController.viewTeams);
 router.get('/user/team/profile/:slug', UserAuth, redisMiddleWare.redisWebCache, TeamController.editTeams);
 router.get('/user/search/team', UserAuth,  TeamController.searchTeams);
 
