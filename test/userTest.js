@@ -17,7 +17,6 @@ should;
                 done();
             });
         });
-
         /*
         * Test the /POST route
         */
@@ -26,7 +25,7 @@ should;
                 let user = {
                     first_name: 'samuel',
                     last_name: 'david',
-                    email: 'ryan@ryan.com',
+                    email: 'david@email.com',
                     password: 'password'
                 }
                 chai.request(server)
@@ -48,22 +47,23 @@ should;
         });
 
 
-        // describe('POST /api/v1/user/signin', () => {
-        //     it('should respond with a success message along with a signed in user that was added', (done) => {
-        //         let user = {
-        //             email: 'ryan@ryan.com',
-        //             password: 'password'
-        //         }
-        //         chai.request(server)
-        //             .post('/api/v1/user/signin')
-        //             .send(user)
-        //             .end((err, res) => {
-        //                 res.should.have.status(status.ok);
-        //                 res.body.should.be.a('object');
-        //                 res.body.should.have.property('message').eql(messages.signIn.success);
-        //                 res.body.data.should.have.property('token');
-        //                 done();
-        //             });
-        //     });
-        // });
+        describe('POST /api/v1/user/signin', () => {
+            it('should respond with a success message along with a signed in user', (done) => {
+                let user = {
+                    email: 'david@email.com',
+                    password: 'password'
+                }
+                chai.request(server)
+                    .post('/api/v1/user/signin')
+                    .send(user)
+                    .end((err, res) => {
+                        res.should.have.status(status.ok);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('message').eql(messages.signIn.success);
+                        res.body.data.should.have.property('token');
+                        done();
+                    });
+            });
+        });
     })
+
