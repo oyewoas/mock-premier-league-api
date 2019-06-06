@@ -8,6 +8,8 @@ const UsersRoute = require('./app/routes/userRoute');
 const AdminsRoute = require('./app/routes/adminRoute');
 const TeamRoute = require('./app/routes/teamRoute');
 const FixtureRoute = require('./app/routes/fixtureRoute');
+const SeedRoute = require('./app/routes/seedRoute');
+
 const dbConnect = require('./app/db/dbConnection');
 const morgan = require('morgan');
 
@@ -27,6 +29,8 @@ app.use('/api/v1', UsersRoute);
 app.use('/api/v1', AdminsRoute);
 app.use('/api/v1',  TeamRoute);
 app.use('/api/v1',  FixtureRoute);
+app.use('/api/v1',  SeedRoute);
+
 
 
 app.listen(env.port).on('listening', () => {
