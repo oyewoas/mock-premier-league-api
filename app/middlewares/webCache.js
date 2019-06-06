@@ -22,6 +22,13 @@ let redisWebCache = (req, res, next) => {
             next();
         }
     });
+    client.del(key, function(err, reply) {
+        if (reply) {
+            res.send(reply);
+            return;
+        }
+    });
+
 };
 
 module.exports = {
